@@ -1,0 +1,114 @@
+---
+configure_sudoers: yes
+configure_terminal: no
+configure_osx: no
+
+dotfiles_repo: https://github.com/generoi/dotfiles.git
+dotfiles_repo_accept_hostkey: yes
+dotfiles_repo_local_destination: ~/.dotfiles
+dotfiles_files:
+  - .bash_profile
+  - .bashrc
+  - .gitconfig
+  - .gitignore
+  - .ignore
+  - .inputrc
+  - .vimrc
+  - .bash/.gitignore
+  - .bash/aliases.sh
+  - .bash/completions.sh
+  - .bash/exports.sh
+  - .bash/functions.sh
+  - .bash/prompt.sh
+  - .bash/shell.sh
+  - .bash/ssh-agent.sh
+
+homebrew_installed_packages:
+  # Install GNU packages.
+  # https://www.topbug.net/blog/2013/04/14/install-and-use-gnu-command-line-tools-in-mac-os-x/
+  - coreutils
+  - binutils
+  - diffutils
+  - { name: ed, install_options: "default-names" }
+  - { name: findutils, install_options: "with-default-names" }
+  - gawk
+  - { name: gnu-indent, install_options: "with-default-names" }
+  - { name: gnu-sed, install_options: "with-default-names" }
+  - { name: gnu-tar, install_options: "with-default-names" }
+  - { name: gnu-which, install_options: "with-default-names" }
+  - gnutls
+  - { name: grep, install_options: "with-default-names" }
+  - gzip
+  - screen
+  - watch
+  - { name: wdiff, install_options: "with-gettext" }
+  - wget
+  # Update GNU pre-installed packages.
+  - bash
+  - emacs
+  - gdb
+  - gpatch
+  - less
+  - m4
+  - make
+  - nano
+  # Update non-GNU pre-installed packages.
+  - file-formula
+  - git
+  - openssh
+  - perl
+  - python
+  - rsync
+  - svn
+  - unzip
+
+  # Programming languages
+  - node
+  - { name: php71, install_options: "with-pear,without-fpm" }
+  - python3
+  - ruby
+
+  # Essential development tools/libraries.
+  - bash-completion2         # bash 4
+  - composer
+  - fasd                      # autojump
+  - openssl                   # ssl/tls toolkit
+  - ssh-copy-id               # send public key to remote
+  - the_silver_searcher       # ag, faster than ack
+  - tree                      # recursive directory listing
+  - { name: vim, install_options: "with-override-system-vi" }
+
+homebrew_taps:
+  - caskroom/cask          # casks
+  - homebrew/core          #
+  - homebrew/php           #
+
+homebrew_cask_apps:
+  - firefox                # crossbrowser testing
+  - google-chrome          # primary browser
+  - lastpass               # browser plugins
+  - skype                  # work
+  - slack                  # work
+  - sublime-text           # work
+  - vagrant                # work
+  - virtualbox             # work
+
+composer_packages:
+  - name: hirak/prestissimo    # parallel composer downloads
+  - name: wp-cli/wp-cli        # wp cli tool
+  - { name: drush/drush, version: '^8.1' } # drupal cli tool
+
+npm_packages:
+  - name: yarn                 # package manager
+  - name: webpack              # build tool
+  - name: bower                # package manager
+  - name: gulp                 # build tool
+
+gem_packages:
+  - name: bundler              # package manager
+  - name: capistrano           # deploy tool
+
+post_provision_tasks: "{{ playbook_dir }}/../tasks/*.yml"
+
+# Variables used across tasks/*.yml
+local_user: "{{ ansible_env.SUDO_USER | default(ansible_env.USER, true) | default(ansible_user_id, true) }}"

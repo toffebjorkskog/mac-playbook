@@ -1,0 +1,17 @@
+---
+- hosts: all
+  connection: local
+
+  vars_prompt:
+    - name: "git_user_name"
+      prompt: "Your full name used by git commits"
+    - name: "git_user_email"
+      prompt: "The email address associated with your git commits"
+    - name: "git_github_user"
+      prompt: "Your GitHub username"
+
+  pre_tasks:
+    - include_vars: config.yml
+      tags: ['always']
+
+- include: geerlingguy.mac-dev-playbook/main.yml
