@@ -1,27 +1,8 @@
 ---
+configure_dotfiles: no
 configure_sudoers: yes
 configure_terminal: no
 configure_osx: no
-
-dotfiles_repo: https://github.com/generoi/dotfiles.git
-dotfiles_repo_accept_hostkey: yes
-dotfiles_repo_local_destination: ~/.dotfiles
-dotfiles_files:
-  - .bash_profile
-  - .bashrc
-  - .gitconfig
-  - .gitignore
-  - .ignore
-  - .inputrc
-  - .vimrc
-  - .bash/.gitignore
-  - .bash/aliases.sh
-  - .bash/completions.sh
-  - .bash/exports.sh
-  - .bash/functions.sh
-  - .bash/prompt.sh
-  - .bash/shell.sh
-  - .bash/ssh-agent.sh
 
 homebrew_installed_packages:
   # Install GNU packages.
@@ -61,8 +42,9 @@ homebrew_installed_packages:
   - rsync
   - svn
   - unzip
+  - { name: vim, install_options: "with-override-system-vi" }
 
-  # Programming languages
+  # Additional programming languages
   - node
   - { name: php71, install_options: "with-pear,without-fpm" }
   - python3
@@ -71,12 +53,8 @@ homebrew_installed_packages:
   # Essential development tools/libraries.
   - bash-completion2         # bash 4
   - composer
-  - fasd                      # autojump
   - openssl                   # ssl/tls toolkit
   - ssh-copy-id               # send public key to remote
-  - the_silver_searcher       # ag, faster than ack
-  - tree                      # recursive directory listing
-  - { name: vim, install_options: "with-override-system-vi" }
 
 homebrew_taps:
   - caskroom/cask          # casks
@@ -87,11 +65,10 @@ homebrew_cask_apps:
   - firefox                # crossbrowser testing
   - google-chrome          # primary browser
   - lastpass               # browser plugins
-  - skype                  # work
-  - slack                  # work
-  - sublime-text           # work
-  - vagrant                # work
-  - virtualbox             # work
+  - slack                  # team chat software
+  - sublime-text           # code editor
+  - vagrant                # virtual machine manager
+  - virtualbox             # virtual machine
 
 composer_packages:
   - name: hirak/prestissimo    # parallel composer downloads
@@ -109,6 +86,3 @@ gem_packages:
   - name: capistrano           # deploy tool
 
 post_provision_tasks: "{{ playbook_dir }}/../tasks/*.yml"
-
-# Variables used across tasks/*.yml
-local_user: "{{ ansible_env.SUDO_USER | default(ansible_env.USER, true) | default(ansible_user_id, true) }}"
