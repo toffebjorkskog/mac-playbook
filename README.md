@@ -5,7 +5,7 @@ This playbook installs required Mac tools for developers at Genero. The playbook
 *See also*:
 
 - [`geerlingguy/mac-dev-playbook`](https://github.com/geerlingguy/mac-dev-playbook) (the actual playbook used to provision)
-- [`generoi/dotfiles`](https://github.com/generoi/dotfiles) (the dotfiles which will be installed)
+- [`generoi/dotfiles`](https://github.com/generoi/dotfiles) (Genero dotfiles not installed but a suggestion)
 
 ## Installation
 
