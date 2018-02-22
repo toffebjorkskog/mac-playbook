@@ -25,6 +25,7 @@ homebrew_installed_packages:
   - { name: wdiff, install_options: "with-gettext" }
   - wget
   # Update GNU pre-installed packages.
+  - { name: curl, install_options: "with-nghttp2" }
   - bash
   - emacs
   - gdb
