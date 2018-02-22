@@ -72,6 +72,8 @@ homebrew_cask_apps:
   - vagrant                # virtual machine manager
   - virtualbox             # virtual machine
 
+homebrew_services: []
+
 composer_packages:
   - name: hirak/prestissimo    # parallel composer downloads
   - name: wp-cli/wp-cli        # wp cli tool
