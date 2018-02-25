@@ -21,7 +21,7 @@ before_install:
   - sudo rm -rf /usr/local/Caskroom
   - sudo rm -rf /usr/local/bin/brew
   # Uninstall rvm and ruby
-  - rvm implode
+  - rvm implode --force
 
 install:
   # Add ansible.cfg to pick up roles path.
