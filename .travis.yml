@@ -1,8 +1,16 @@
 ---
 sudo: required
 language: objective-c
-# 10.13 (see https://docs.travis-ci.com/user/reference/osx/#OS-X-Version)
-osx_image: xcode9.3beta
+# Reference for OS X Versions:
+# https://docs.travis-ci.com/user/reference/osx/#OS-X-Version
+matrix:
+  include:
+    # High Sierra (10.13)
+    - os: osx
+      osx_image: xcode9.3beta
+    # Sierra (10.12)
+    - os: osx
+      osx_image: xcode9.2
 
 before_install:
   # Uninstall existing brew installation.
@@ -12,6 +20,8 @@ before_install:
   - sudo rm -rf /usr/local/Homebrew
   - sudo rm -rf /usr/local/Caskroom
   - sudo rm -rf /usr/local/bin/brew
+  # Uninstall rvm and ruby
+  - rvm implode
 
 install:
   # Add ansible.cfg to pick up roles path.
