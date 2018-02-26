@@ -8,9 +8,6 @@ matrix:
     # High Sierra (10.13)
     - os: osx
       osx_image: xcode9.3beta
-    # Sierra (10.12)
-    - os: osx
-      osx_image: xcode9.2
 
 before_install:
   # Uninstall existing brew installation.
