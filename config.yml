@@ -89,3 +89,6 @@ gem_packages:
   - name: capistrano           # deploy tool
 
 post_provision_tasks: "{{ playbook_dir }}/../tasks/*.yml"
+
+# Variables used across tasks/*.yml
+local_user: "{{ ansible_env.SUDO_USER | default(ansible_env.USER, true) | default(ansible_user_id, true) }}"
