@@ -1,8 +1,33 @@
 ---
-configure_dotfiles: no
+configure_dotfiles: yes
 configure_sudoers: yes
 configure_terminal: no
 configure_osx: no
+
+dotfiles_repo: https://github.com/toffebjorkskog/dotfiles.git
+dotfiles_repo_accept_hostkey: yes
+dotfiles_repo_local_destination: ~/dev/dotfiles
+dotfiles_files:
+  - .ignore
+  - .bash_profile
+  - .bashrc
+  - .chunkwmrc
+  - .dircolors
+  - .gitconfig
+  - .gitignore
+  - .inputrc
+  # .khdrc
+  - .lftprc
+  - .bash_sessions_disable
+  - .bash/aliases.sh
+  - .bash/colors.sh
+  - .bash/completions.sh
+  - .bash/exports.sh
+  - .bash/functions.sh
+  - .bash/prompt.sh
+  - .bash/shell.sh
+  - .bash/ssh-agent.sh
+  - .osx/osx.sh
 
 homebrew_installed_packages:
   # Install GNU packages.
